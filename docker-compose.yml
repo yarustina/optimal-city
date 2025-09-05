@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: optimal-city-db
+    environment:
+      POSTGRES_USER: rails_user
+      POSTGRES_PASSWORD: rails_pass
+      POSTGRES_DB: optimal_city_production
+    ports:
+      - "5432:5432"
+    networks:
+      - optimal-city-net
+
+  web:
+    build: .
+    container_name: optimal-city-cont
+    depends_on:
+      - db
+    environment:
+      RAILS_ENV: production
+      DATABASE_HOST: db
+      DATABASE_NAME: optimal_city_production
+      DATABASE_USER: rails_user
+      DATABASE_PASSWORD: rails_pass
+      SECRET_KEY_BASE: "секретный_ключ_rails" # Можно сгенерировать командой `rails secret`
+    ports:
+      - "3000:3000"
+    networks:
+      - optimal-city-net
+
+networks:
+  optimal-city-net:
