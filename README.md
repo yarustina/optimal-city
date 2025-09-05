@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 🏙 Optimal City
 
-Things you may want to cover:
+Контейнеризованное Ruby on Rails приложение, упакованное в Docker.
+Работает на Ruby 3.3, Bundler 2.6.3, сервер — Puma.
 
-* Ruby version
+## ⚡ Быстрый старт
+## Сборка образа
+```docker build -t optimal-city-image .```
 
-* System dependencies
+## Запуск контейнера
+```docker run -d --name optimal-city-cont -p 3000:3000 optimal-city-image```
 
-* Configuration
+## Логи (посмотреть что там творится)
+```docker logs -f optimal-city-cont```
 
-* Database creation
 
-* Database initialization
+После запуска приложение будет доступно тут 👉 http://localhost:3000 (нет, шучу)
 
-* How to run the test suite
+# ⚙️ Что внутри
 
-* Services (job queues, cache servers, search engines, etc.)
+### Ruby 3.3
 
-* Deployment instructions
+### Bundler 2.6.3
 
-* ...
+### Rails (production mode)
+
+### Puma как веб-сервер
+
+### Node.js + Yarn для ассетов
+
+### PostgreSQL драйвер (libpq-dev)
